@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DCDCDC"
     tools:context="com.neusoft.yl.childrenplatform.Fragment.main_fragment.TrendsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,9 +11,10 @@
         android:layout_height="0.1dp"
         android:elevation="3dp"
         android:background="#CDC9C9"/>
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/trends_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="没错，这里还是没有，啦啦啦ヾ (o ° ω ° O ) ノ゙" />
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

@@ -26,7 +26,7 @@ public class TrendsBean {
      * comment_num : 0
      */
 
-    private int commodity_id;
+    private String commodity_id;
     private int type_id;
     private int subsettype_id;
     private int company_id;
@@ -48,11 +48,11 @@ public class TrendsBean {
     private String company_image;
     private int comment_num;
 
-    public int getCommodity_id() {
+    public String getCommodity_id() {
         return commodity_id;
     }
 
-    public void setCommodity_id(int commodity_id) {
+    public void setCommodity_id(String commodity_id) {
         this.commodity_id = commodity_id;
     }
 

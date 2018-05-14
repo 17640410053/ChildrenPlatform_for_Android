@@ -8,6 +8,7 @@ import com.neusoft.yl.childrenplatform.Bean.CompBean;
 import com.neusoft.yl.childrenplatform.Bean.LoginBean;
 import com.neusoft.yl.childrenplatform.Bean.PartitionBean;
 import com.neusoft.yl.childrenplatform.Bean.RegisterBean;
+import com.neusoft.yl.childrenplatform.Bean.TrendsBean;
 import com.neusoft.yl.childrenplatform.Bean.UpUserBean;
 import com.neusoft.yl.childrenplatform.Bean.UserCenterBean;
 
@@ -99,4 +100,8 @@ public interface RetrofitService {
     //获取分类列表
     @GET("Partition/GetPartition")
     Call<List<PartitionBean>> getPartition();
+
+    //获取动态列表
+    @GET("Trends/GetTrends")
+    Call<List<TrendsBean>> getTrends();
 }

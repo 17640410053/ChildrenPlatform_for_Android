@@ -144,7 +144,7 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 commodity_browse_num.setText(commodityIntroBean.getHintnum() + "浏览");
                 commodity_collect_num.setText(commodityIntroBean.getCollectnum() + "收藏");
                 if (commodityIntroBean.getDetail().equals("")) {
-                    commodity_detail.setText("该商品尚未填写简介。");
+                    commodity_detail.setText("该商品尚未填写详情。");
                 } else {
                     commodity_detail.setText(commodityIntroBean.getDetail());
                 }
