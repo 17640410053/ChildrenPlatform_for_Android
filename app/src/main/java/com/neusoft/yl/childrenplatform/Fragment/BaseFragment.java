@@ -17,4 +17,5 @@ public class BaseFragment extends Fragment {
     public void setUserId(String userId){
         BaseActivity.setUser_id(userId);
     }
+
 }

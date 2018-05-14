@@ -2,14 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.type_fragment.FoodFragment"
-    android:padding="5dp">
+    android:padding="5dp"
+    tools:context=".Fragment.type_fragment.FoodFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/food_recycle"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/food_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

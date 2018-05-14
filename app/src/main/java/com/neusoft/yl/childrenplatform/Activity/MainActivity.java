@@ -85,21 +85,21 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences(filename, MODE);
-        radioGroup_main = (RadioGroup) findViewById(R.id.radioGroup_main);
-        text_header = (TextView) findViewById(R.id.text_header);
+        radioGroup_main = findViewById(R.id.radioGroup_main);
+        text_header = findViewById(R.id.text_header);
         fragmentManager = getSupportFragmentManager();
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         final View nav_header_main = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        text_username = (TextView) nav_header_main.findViewById(R.id.text_username);
-        text_telephone = (TextView) nav_header_main.findViewById(R.id.text_telephone);
-        head_img = (RoundedImageView) nav_header_main.findViewById(R.id.head_img);
+        text_username = nav_header_main.findViewById(R.id.text_username);
+        text_telephone = nav_header_main.findViewById(R.id.text_telephone);
+        head_img = nav_header_main.findViewById(R.id.head_img);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -260,7 +260,7 @@ public class MainActivity extends BaseActivity
             }, 2000);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

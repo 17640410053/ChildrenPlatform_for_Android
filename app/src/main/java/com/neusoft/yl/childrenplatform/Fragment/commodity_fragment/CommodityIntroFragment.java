@@ -166,13 +166,17 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 }
                 break;
             case Const.COLLECT:
-                CheckBean collectBean = (CheckBean) o;
-                if (collectBean.getCode().equals("200")) {
-                    collect_image.setBackgroundResource(R.drawable.ic_collect_no);
-                    text_is_collect.setText(collectBean.getMessage());
+                if (getUserId() == null) {
+                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
                 } else {
-                    collect_image.setBackgroundResource(R.drawable.ic_collect_is);
-                    text_is_collect.setText(collectBean.getMessage());
+                    CheckBean collectBean = (CheckBean) o;
+                    if (collectBean.getCode().equals("200")) {
+                        collect_image.setBackgroundResource(R.drawable.ic_collect_no);
+                        text_is_collect.setText(collectBean.getMessage());
+                    } else {
+                        collect_image.setBackgroundResource(R.drawable.ic_collect_is);
+                        text_is_collect.setText(collectBean.getMessage());
+                    }
                 }
                 break;
             case Const.ISFOLLOW:
@@ -182,10 +186,15 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 }
                 break;
             case Const.FOLLOW:
-                CheckBean followBean = (CheckBean) o;
-                if (followBean.getCode().equals("200")){
-                    btn_follow.setText(followBean.getMessage());
+                if (getUserId() == null){
+                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+                }else {
+                    CheckBean followBean = (CheckBean) o;
+                    if (followBean.getCode().equals("200")) {
+                        btn_follow.setText(followBean.getMessage());
+                    }
                 }
+
                 break;
         }
     }

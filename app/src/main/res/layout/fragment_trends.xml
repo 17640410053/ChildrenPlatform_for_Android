@@ -9,12 +9,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:elevation="3dp"
-        android:background="#CDC9C9"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/trends_recycle"
+        android:background="#CDC9C9"
+        android:elevation="3dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/trends_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

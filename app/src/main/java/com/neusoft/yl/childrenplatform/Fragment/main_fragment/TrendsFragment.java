@@ -2,8 +2,10 @@ package com.neusoft.yl.childrenplatform.Fragment.main_fragment;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,12 +24,14 @@ import com.neusoft.yl.childrenplatform.Model.TrendsModel;
 import com.neusoft.yl.childrenplatform.R;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TrendsFragment extends BaseFragment implements RetrofitListener<List<TrendsBean>> {
     private RecyclerView trends_recycle;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public TrendsFragment() {
         // Required empty public constructor
@@ -36,7 +40,22 @@ public class TrendsFragment extends BaseFragment implements RetrofitListener<Lis
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         trends_recycle = view.findViewById(R.id.trends_recycle);
+        swipeRefreshLayout = view.findViewById(R.id.srl);
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_pink);
         initData();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Random random = new Random();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1200);
+            }
+        });
     }
 
     @Override

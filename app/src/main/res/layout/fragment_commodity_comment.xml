@@ -8,9 +8,40 @@
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/comment_recycle"
+        android:layout_above="@+id/view"
         android:elevation="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp">
     </android.support.v7.widget.RecyclerView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_above="@+id/comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/gray_light" />
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/comment_layout"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:hint="说点什么吧"
+            android:paddingHorizontal="15dp"
+            android:layout_toLeftOf="@+id/btn_send"
+            android:background="@drawable/comment_edit_sharp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/btn_send"
+            android:background="@drawable/ic_send"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="38dp"
+            android:layout_height="38dp" />
+    </RelativeLayout>
 </RelativeLayout>
