@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.neusoft.yl.childrenplatform.Fragment.BaseFragment;
 import com.neusoft.yl.childrenplatform.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TrendsFragment extends Fragment {
+public class TrendsFragment extends BaseFragment {
 
 
     public TrendsFragment() {
