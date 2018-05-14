@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.neusoft.yl.childrenplatform.Fragment.main_fragment.HomeFragment">
+    
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_pink">
+        <TextView
+            android:id="@+id/recommend_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="推荐"
+            android:textColor="#696969"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/food_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="食物"
+            android:textColor="#696969"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/activity_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="娱乐"
+            android:textColor="#696969"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/dress_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="服饰"
+            android:textColor="#696969"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/train_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="文化"
+            android:textColor="#696969"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2.7dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@color/color_pink">
+        <ImageView
+            android:id="@+id/cursor"
+            android:layout_marginLeft="11dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="matrix"
+            android:src="@color/color_withe"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:elevation="3dp"
+        android:background="#CDC9C9"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

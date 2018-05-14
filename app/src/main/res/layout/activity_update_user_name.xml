@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_updata_username"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.neusoft.yl.childrenplatform.Activity.UpdateUserNameActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:elevation="5dp"
+        android:background="@color/color_pink">
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/ic_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/back_btn"
+            android:text="修改昵称"
+            android:textColor="@color/color_withe"
+            android:textSize="16sp" />
+
+        <TextView
+            android:text="保存"
+            android:id="@+id/text_save"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:onClick="onClick"
+            android:textColor="@color/color_withe"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <EditText
+        android:hint="请输入新的昵称"
+        android:textSize="14sp"
+        android:maxLength="14"
+        android:paddingLeft="10dp"
+        android:id="@+id/edit_new_username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"/>
+
+</LinearLayout>

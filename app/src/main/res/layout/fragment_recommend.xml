@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.type_fragment.RecommendFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <RadioGroup
+            android:id="@+id/radioGroup_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_comp"
+                android:text="综合"
+                android:textColor="@drawable/select_main_radio_textcolor"
+                style="@style/RadioButtonStyle"/>
+        </RadioGroup>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@android:color/darker_gray"
+            android:elevation="1dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/recommend_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</LinearLayout>

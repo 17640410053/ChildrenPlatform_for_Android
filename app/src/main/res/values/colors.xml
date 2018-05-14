@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_pink">#FF82AB</color>
+    <color name="color_withe">#FFFFFF</color>
+    <color name="color_gray">#696969</color>
+    <color name="color_black_pink">#CD2626</color>
+
+
+    <color name="font_normal">#555555</color>
+    <color name="green_300">#81C784</color>
+
+
+    <color name="focus_bg_color">@android:color/transparent</color>
+    <color name="focus_text_color">#fb7299</color>
+    <color name="gray_light">#dcdcdc</color>
+    <color name="black_alpha_45">#71000000</color>
+</resources>

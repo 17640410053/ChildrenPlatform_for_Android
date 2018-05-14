@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_withe"
+    tools:context="com.neusoft.yl.childrenplatform.Fragment.dialog_fragment.SexDialogFragment">
+
+    <TextView
+        android:text="性别选择"
+        android:textColor="@android:color/black"
+        android:background="@color/color_withe"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@color/color_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_gender"
+        android:layout_width="match_parent"
+        android:background="@color/color_withe"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:drawableTop="@drawable/select_male_check"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawablePadding="5dp"
+            android:textSize="0sp"
+            style="@style/RadioButtonStyle"/>
+        <RadioButton
+            android:id="@+id/radio_gender"
+            android:drawableTop="@drawable/select_gender_check"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textSize="0sp"
+            style="@style/RadioButtonStyle"/>
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:drawableTop="@drawable/select_female_check"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textSize="0sp"
+            style="@style/RadioButtonStyle"/>
+    </RadioGroup>
+
+    <View
+        android:background="@color/color_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp" />
+    <TextView
+        android:id="@+id/sex_save"
+        android:text="确定"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+</LinearLayout>

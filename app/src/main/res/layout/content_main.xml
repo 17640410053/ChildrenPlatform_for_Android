@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.neusoft.yl.childrenplatform.Activity.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_above="@+id/radioGroup_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup_main"
+        android:layout_width="match_parent"
+        android:background="@color/color_withe"
+        android:orientation="horizontal"
+        android:elevation="5dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RadioButton
+            android:id="@+id/radio_home"
+            android:text="首页"
+            android:textSize="12sp"
+            android:drawableTop="@drawable/select_home_radio"
+            android:textColor="@drawable/select_main_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radio_partition"
+            android:text="分区"
+            android:textSize="12sp"
+            android:drawableTop="@drawable/select_partition_radio"
+            android:textColor="@drawable/select_main_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radio_trends"
+            android:text="动态"
+            android:textSize="12sp"
+            android:drawableTop="@drawable/select_trends_radio"
+            android:textColor="@drawable/select_main_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radio_news"
+            android:text="消息"
+            android:textSize="12sp"
+            android:drawableTop="@drawable/select_news_radio"
+            android:textColor="@drawable/select_main_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+    </RadioGroup>
+</RelativeLayout>

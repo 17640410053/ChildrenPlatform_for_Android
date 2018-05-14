@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:elevation="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <RadioGroup
+        android:id="@+id/radioGroup_user_center"
+        android:layout_width="match_parent"
+        android:background="@color/color_withe"
+        android:orientation="horizontal"
+        android:layout_height="40dp">
+        <RadioButton
+            android:id="@+id/radio_user_home"
+            android:text="主页"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@drawable/select_ucenter_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radio_user_collect"
+            android:text="收藏"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@drawable/select_ucenter_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radio_user_follow"
+            android:text="关注"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@drawable/select_ucenter_radio_textcolor"
+            style="@style/RadioButtonStyle"/>
+    </RadioGroup>
+
+    <ImageView
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp" />
+
+    <FrameLayout
+        android:id="@+id/user_center_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</LinearLayout>
