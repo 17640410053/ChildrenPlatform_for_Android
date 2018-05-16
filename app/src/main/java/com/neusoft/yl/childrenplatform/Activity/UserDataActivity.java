@@ -59,12 +59,12 @@ public class UserDataActivity extends BaseActivity implements SexDialogFragment.
 
     @Override
     void initViews() {
-        back_btn = (Button) findViewById(R.id.back_btn);
-        user_name = (TextView) findViewById(R.id.user_name);
-        user_uid = (TextView) findViewById(R.id.user_uid);
-        user_sex = (TextView) findViewById(R.id.user_sex);
-        user_address = (TextView) findViewById(R.id.user_address);
-        user_header = (RoundedImageView) findViewById(R.id.user_header);
+        back_btn =  findViewById(R.id.back_btn);
+        user_name =  findViewById(R.id.user_name);
+        user_uid =  findViewById(R.id.user_uid);
+        user_sex =  findViewById(R.id.user_sex);
+        user_address =  findViewById(R.id.user_address);
+        user_header =  findViewById(R.id.user_header);
         sharedPreferences = getSharedPreferences(filename, MODE);
     }
 

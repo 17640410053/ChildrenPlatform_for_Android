@@ -18,10 +18,10 @@ import com.neusoft.yl.childrenplatform.R;
 
 import static android.widget.Toast.makeText;
 
-public class LoginActivity extends BaseActivity implements RetrofitListener<LoginBean>{
+public class LoginActivity extends BaseActivity implements RetrofitListener<LoginBean> {
 
-    private EditText telephone,password;
-    private Button back_btn,login_btn,reg_btn;
+    private EditText telephone, password;
+    private Button back_btn, login_btn, reg_btn;
 
     //存储用户ID
     private SharedPreferences sharedPreferences;
@@ -32,12 +32,12 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences(filename,MODE);
-        telephone = (EditText) findViewById(R.id.telephone);
-        password = (EditText) findViewById(R.id.password);
-        login_btn = (Button) findViewById(R.id.login_btn);
-        reg_btn = (Button) findViewById(R.id.reg_btn);
-        back_btn = (Button) findViewById(R.id.back_btn);
+        sharedPreferences = getSharedPreferences(filename, MODE);
+        telephone = findViewById(R.id.telephone);
+        password = findViewById(R.id.password);
+        login_btn = findViewById(R.id.login_btn);
+        reg_btn = findViewById(R.id.reg_btn);
+        back_btn = findViewById(R.id.back_btn);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,18 +50,20 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (TextUtils.isEmpty(telephone.getText()) || TextUtils.isEmpty(password.getText())){
+                if (TextUtils.isEmpty(telephone.getText()) || TextUtils.isEmpty(password.getText())) {
                     //如果为空登录按钮不可选
                     login_btn.setEnabled(false);
                     login_btn.setBackgroundResource(R.drawable.shape_login_btn_false);
-                }else {
+                } else {
                     //否者可选
                     login_btn.setEnabled(true);
                     login_btn.setBackgroundResource(R.drawable.select_login_btn);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
@@ -71,18 +73,20 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (TextUtils.isEmpty(telephone.getText()) || TextUtils.isEmpty(password.getText())){
+                if (TextUtils.isEmpty(telephone.getText()) || TextUtils.isEmpty(password.getText())) {
                     //如果为空登录按钮不可选
                     login_btn.setEnabled(false);
                     login_btn.setBackgroundResource(R.drawable.shape_login_btn_false);
-                }else {
+                } else {
                     //否者可选
                     login_btn.setEnabled(true);
                     login_btn.setBackgroundResource(R.drawable.select_login_btn);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
@@ -91,18 +95,17 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivityForResult(intent,110);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, 110);
             }
         });
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (telephone.getText().toString().equals("")||password.getText().toString().equals("")){
-                    makeText(LoginActivity.this,"用户名和密码不能为空", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if (telephone.getText().toString().equals("") || password.getText().toString().equals("")) {
+                    makeText(LoginActivity.this, "用户名和密码不能为空", Toast.LENGTH_SHORT).show();
+                } else {
                     login();
                 }
             }
@@ -111,8 +114,8 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 110){
-            switch (resultCode){
+        if (requestCode == 110) {
+            switch (resultCode) {
                 case RESULT_OK:
                     telephone.setText(data.getStringExtra("telephone"));
                     password.setText(data.getStringExtra("password"));
@@ -125,7 +128,7 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
 
     private void login() {
         UserModel userModel = new UserModel();
-        userModel.userLogin(telephone.getText().toString().trim(),password.getText().toString().trim(),this);
+        userModel.userLogin(telephone.getText().toString().trim(), password.getText().toString().trim(), this);
     }
 
     @Override
@@ -155,17 +158,17 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
 
     @Override
     public void onSuccess(LoginBean loginBean, int flag) {
-        if (loginBean.getCode().equals("200")){
+        if (loginBean.getCode().equals("200")) {
             showToast(loginBean.getMessage());
-            saveUserId(loginBean.getData().getUser_id(),loginBean.getData().getEmail(),loginBean.getData().getUsername(),loginBean.getData().getImage());
+            saveUserId(loginBean.getData().getUser_id(), loginBean.getData().getEmail(), loginBean.getData().getUsername(), loginBean.getData().getImage());
             setUser_id(loginBean.getData().getUser_id());
             Intent data = new Intent();
-            data.putExtra("email",loginBean.getData().getEmail());
-            data.putExtra("username",loginBean.getData().getUsername());
-            data.putExtra("user_pic",loginBean.getData().getImage());
-            setResult(RESULT_OK,data);
+            data.putExtra("email", loginBean.getData().getEmail());
+            data.putExtra("username", loginBean.getData().getUsername());
+            data.putExtra("user_pic", loginBean.getData().getImage());
+            setResult(RESULT_OK, data);
             finish();
-        }else {
+        } else {
             showToast(loginBean.getMessage());
         }
     }
@@ -175,12 +178,12 @@ public class LoginActivity extends BaseActivity implements RetrofitListener<Logi
         showToast("网络错误");
     }
 
-    public void saveUserId(String userId,String email,String username,String user_pic){
+    public void saveUserId(String userId, String email, String username, String user_pic) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userID",userId);
-        editor.putString("email",email);
-        editor.putString("username",username);
-        editor.putString("user_pic",user_pic);
+        editor.putString("userID", userId);
+        editor.putString("email", email);
+        editor.putString("username", username);
+        editor.putString("user_pic", user_pic);
         editor.commit();
     }
 }

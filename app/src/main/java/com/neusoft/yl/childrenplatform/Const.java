@@ -29,4 +29,5 @@ public class Const {
     public final static int FOLLOW = 16;
     public final static int GETPARTITION = 17;
     public final static int GETTRENDS = 18;
+    public final static int UPORDER = 19;
 }

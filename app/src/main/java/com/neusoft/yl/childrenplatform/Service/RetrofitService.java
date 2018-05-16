@@ -80,12 +80,12 @@ public interface RetrofitService {
     //判断是否收藏
     @GET("Collect/IsCollect")
     Call<CheckBean> getIsCollect(@Query("commodity_id") String commodity_id,
-                                     @Query("user_id") String user_id);
+                                 @Query("user_id") String user_id);
 
     //添加&取消收藏
     @GET("Collect/Collect")
     Call<CheckBean> getCollect(@Query("commodity_id") String commodity_id,
-                                     @Query("user_id") String user_id);
+                               @Query("user_id") String user_id);
 
     //判断是否关注
     @GET("Follow/IfFollow")
@@ -95,7 +95,7 @@ public interface RetrofitService {
     //添加&取消关注
     @GET("Follow/Follow")
     Call<CheckBean> getFollow(@Query("company_id") int company_id,
-                                @Query("user_id") String user_id);
+                              @Query("user_id") String user_id);
 
     //获取分类列表
     @GET("Partition/GetPartition")
@@ -104,4 +104,12 @@ public interface RetrofitService {
     //获取动态列表
     @GET("Trends/GetTrends")
     Call<List<TrendsBean>> getTrends();
+
+    //购买接口
+    @GET("Order/create_order")
+    Call<CheckBean> upOrder(@Query("commodity_id") String commodity_id,
+                            @Query("user_id") String user_id,
+                            @Query("telephone") String telephone,
+                            @Query("address") String address,
+                            @Query("number") String number);
 }

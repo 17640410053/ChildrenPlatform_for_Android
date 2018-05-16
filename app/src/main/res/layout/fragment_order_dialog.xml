@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".Fragment.dialog_fragment.OrderDialogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/edit_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="填写你的手机号"
+        android:inputType="phone" />
+    <EditText
+        android:id="@+id/edit_address"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="填写你的收货地址"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/edit_number"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:hint="填写购买数量"
+        android:inputType="number" />
+    <Button
+        android:id="@+id/checkout"
+        android:background="@drawable/shape_login_btn_false"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/color_withe"
+        android:enabled="false"
+        android:text="立即下单" />
+
+</LinearLayout>

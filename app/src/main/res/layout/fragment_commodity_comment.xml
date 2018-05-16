@@ -14,14 +14,12 @@
         android:layout_height="match_parent"
         android:padding="10dp">
     </android.support.v7.widget.RecyclerView>
-
     <View
         android:id="@+id/view"
         android:layout_above="@+id/comment_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_height"
         android:background="@color/gray_light" />
-
     <RelativeLayout
         android:layout_alignParentBottom="true"
         android:id="@+id/comment_layout"

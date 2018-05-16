@@ -178,16 +178,31 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_height"
             android:background="@color/gray_light" />
-
-        <LinearLayout
+        <RelativeLayout
             android:padding="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_pink"
                 android:id="@+id/commodity_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+            <TextView
+                android:id="@+id/btn_checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_pin_bg"
+                android:gravity="center"
+                android:textColor="@color/focus_text_color" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@color/gray_light" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

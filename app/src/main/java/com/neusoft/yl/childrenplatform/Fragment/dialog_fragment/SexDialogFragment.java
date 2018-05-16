@@ -87,8 +87,8 @@ public class SexDialogFragment extends DialogFragment implements RetrofitListene
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_sex_dialog,null);
-        radioGroup_gender = (RadioGroup) view.findViewById(R.id.radioGroup_gender);
-        sex_save = (TextView) view.findViewById(R.id.sex_save);
+        radioGroup_gender =  view.findViewById(R.id.radioGroup_gender);
+        sex_save = view.findViewById(R.id.sex_save);
         radioGroup_gender.check(R.id.radio_gender);
         radioGroup_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

@@ -1,6 +1,8 @@
 package com.neusoft.yl.childrenplatform.Fragment.commodity_fragment;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import com.neusoft.yl.childrenplatform.Bean.CheckBean;
 import com.neusoft.yl.childrenplatform.Bean.CommodityIntroBean;
 import com.neusoft.yl.childrenplatform.Const;
 import com.neusoft.yl.childrenplatform.Fragment.BaseFragment;
+import com.neusoft.yl.childrenplatform.Fragment.dialog_fragment.OrderDialogFragment;
 import com.neusoft.yl.childrenplatform.Listener.RetrofitListener;
 import com.neusoft.yl.childrenplatform.Model.CompModel;
 import com.neusoft.yl.childrenplatform.R;
@@ -29,11 +32,12 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  */
 public class CommodityIntroFragment extends BaseFragment implements RetrofitListener {
 
-    private TextView commodity_title, commodity_browse_num, commodity_collect_num, commodity_detail, btn_follow, company_name, company_follow_num, text_is_collect;
+    private TextView commodity_title, commodity_browse_num, commodity_collect_num, commodity_detail, btn_follow, company_name, company_follow_num, text_is_collect, commodity_price, btn_checkout;
     private RoundedImageView company_image;
     private LinearLayout liner_share, liner_collect;
     private ImageButton collect_image;
     private int company_id;
+    private String commodity_url;
 
     private void showShare() {
         OnekeyShare oks = new OnekeyShare();
@@ -64,6 +68,9 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
         liner_collect = view.findViewById(R.id.liner_collect);
         text_is_collect = view.findViewById(R.id.text_is_collect);
         collect_image = view.findViewById(R.id.collect_image);
+        commodity_price = view.findViewById(R.id.commodity_price);
+        btn_checkout = view.findViewById(R.id.btn_checkout);
+
         initData();
 
         liner_share.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +91,29 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
             @Override
             public void onClick(View view) {
                 getFollow(company_id);
+            }
+        });
+
+        btn_checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getUserId() == null || getUserId().equals("-1")) {
+                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (commodity_price.getText().toString().trim().equals("￥0.00")) {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(commodity_url));
+                        startActivity(intent);
+                    } else {
+                        OrderDialogFragment orderDialogFragment = new OrderDialogFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("user_id", getUserId());
+                        bundle.putString("commodity_id", getArguments().getString("commodity_id"));
+                        orderDialogFragment.setArguments(bundle);
+                        orderDialogFragment.show(getChildFragmentManager(), "orderDialogFragment");
+                    }
+                }
             }
         });
     }
@@ -152,6 +182,13 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 company_name.setText(commodityIntroBean.getCompany_name());
                 String url = Const.PIC_URL + "company_image/" + commodityIntroBean.getCompany_image();
                 Picasso.with(getActivity()).load(url).into(company_image);
+                commodity_price.setText("￥" + commodityIntroBean.getPrice());
+                if (commodityIntroBean.getPrice().equals("0.00")){
+                    btn_checkout.setText("立即浏览");
+                }else {
+                    btn_checkout.setText("立即购买");
+                }
+                commodity_url = commodityIntroBean.getUrl();
                 company_id = commodityIntroBean.getCompany_id();
                 getIsFollow(commodityIntroBean.getCompany_id());
                 break;
@@ -166,7 +203,7 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 }
                 break;
             case Const.COLLECT:
-                if (getUserId() == null) {
+                if (getUserId() == null || getUserId().equals("-1")) {
                     Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
                 } else {
                     CheckBean collectBean = (CheckBean) o;
@@ -186,9 +223,9 @@ public class CommodityIntroFragment extends BaseFragment implements RetrofitList
                 }
                 break;
             case Const.FOLLOW:
-                if (getUserId() == null){
+                if (getUserId() == null || getUserId().equals("-1")) {
                     Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     CheckBean followBean = (CheckBean) o;
                     if (followBean.getCode().equals("200")) {
                         btn_follow.setText(followBean.getMessage());
