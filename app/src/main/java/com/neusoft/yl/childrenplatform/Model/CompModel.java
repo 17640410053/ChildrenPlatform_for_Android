@@ -62,4 +62,9 @@ public class CompModel extends RetrofitBaseModel {
         Call call = retrofitService.upOrder(commodity_id,user_id,telephone,address,number);
         bindCallback(call,listener,Const.UPORDER);
     }
+
+    public void getCompPartition(int id,RetrofitListener listener){
+        Call call = retrofitService.getCompPartition(id);
+        bindCallback(call,listener,Const.GETCOMPPARTITION);
+    }
 }

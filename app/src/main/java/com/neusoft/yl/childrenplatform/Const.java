@@ -30,4 +30,6 @@ public class Const {
     public final static int GETPARTITION = 17;
     public final static int GETTRENDS = 18;
     public final static int UPORDER = 19;
+    public final static int GETCOMPPARTITION = 20;
+    public final static int GETUSERORDER = 21;
 }

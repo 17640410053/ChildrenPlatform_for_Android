@@ -6,6 +6,7 @@ import com.neusoft.yl.childrenplatform.Bean.CommentBean;
 import com.neusoft.yl.childrenplatform.Bean.CommodityIntroBean;
 import com.neusoft.yl.childrenplatform.Bean.CompBean;
 import com.neusoft.yl.childrenplatform.Bean.LoginBean;
+import com.neusoft.yl.childrenplatform.Bean.OrderBean;
 import com.neusoft.yl.childrenplatform.Bean.PartitionBean;
 import com.neusoft.yl.childrenplatform.Bean.RegisterBean;
 import com.neusoft.yl.childrenplatform.Bean.TrendsBean;
@@ -112,4 +113,12 @@ public interface RetrofitService {
                             @Query("telephone") String telephone,
                             @Query("address") String address,
                             @Query("number") String number);
+
+    //分类接口
+    @GET("Home/compPartition")
+    Call<List<CompBean>> getCompPartition(@Query("id") int id);
+
+    //订单接口
+    @GET("Order/userOrder")
+    Call<List<OrderBean>> getUserOrder(@Query("user_id") String user_id);
 }

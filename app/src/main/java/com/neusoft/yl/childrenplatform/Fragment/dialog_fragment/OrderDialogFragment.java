@@ -46,8 +46,6 @@ public class OrderDialogFragment extends DialogFragment implements RetrofitListe
         edit_number = view.findViewById(R.id.edit_number);
         edit_telephone = view.findViewById(R.id.edit_telephone);
         checkout = view.findViewById(R.id.checkout);
-
-        Toast.makeText(getActivity(), getArguments().getString("user_id"), Toast.LENGTH_SHORT).show();
         edit_telephone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

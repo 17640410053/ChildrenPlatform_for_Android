@@ -1,12 +1,15 @@
 package com.neusoft.yl.childrenplatform.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.neusoft.yl.childrenplatform.Activity.CommodityDetailActivity;
+import com.neusoft.yl.childrenplatform.Activity.PartitionnActivity;
 import com.neusoft.yl.childrenplatform.Bean.PartitionBean;
 import com.neusoft.yl.childrenplatform.Const;
 import com.neusoft.yl.childrenplatform.R;
@@ -29,7 +32,7 @@ public class PartitionAdapter extends BaseAdapter {
 
     @Override
     void onBindVH(RecyclerView.ViewHolder holder, List data, int position) {
-        PartitionBean partitionBean = (PartitionBean) data.get(position);
+        final PartitionBean partitionBean = (PartitionBean) data.get(position);
         if (holder instanceof PartitionViewHolder){
             PartitionViewHolder viewHolder = (PartitionViewHolder) holder;
             viewHolder.text_partition.setText(partitionBean.getName());
@@ -38,7 +41,10 @@ public class PartitionAdapter extends BaseAdapter {
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "11", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context,PartitionnActivity.class);
+                    intent.putExtra("id",partitionBean.getSubsettype_id());
+                    intent.putExtra("name",partitionBean.getName());
+                    context.startActivity(intent);
                 }
             });
         }

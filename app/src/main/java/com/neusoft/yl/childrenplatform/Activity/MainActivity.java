@@ -243,8 +243,13 @@ public class MainActivity extends BaseActivity
             } else {
                 showToast("你还未登录！");
             }
-        } else if (id == R.id.nav_slideshow) {
-            showToast("都说了没有，你怎么还点呢 ( ・◇・)？");
+        } else if (id == R.id.nav_order) {
+            if (isLogined()) {
+                startActivity(new Intent(MainActivity.this, OrderActivity.class));
+            } else {
+                showToast("你还未登录！");
+            }
+
         } else if (id == R.id.nav_manage) {
             showToast("你再点试试？(＃｀皿´)");
         } else if (id == R.id.nav_share) {

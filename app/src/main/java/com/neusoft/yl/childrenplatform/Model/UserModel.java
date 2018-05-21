@@ -68,4 +68,10 @@ public class UserModel extends RetrofitBaseModel {
         this.flag = Const.GETUSERCOLLECT;
         bindCallback(call,listener,Const.GETUSERCOLLECT);
     }
+
+    public void getUserOrder(String user_id,RetrofitListener listener){
+        Call call = userService.getUserOrder(user_id);
+        this.flag = Const.GETUSERORDER;
+        bindCallback(call ,listener,Const.GETUSERORDER);
+    }
 }

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.mob.sdk'
 
-MobSDK{
+MobSDK {
     appKey "25c18cb4c4c42"
     appSecret "96f91834cfa8fedd91cd231abead1819"
     ShareSDK {
