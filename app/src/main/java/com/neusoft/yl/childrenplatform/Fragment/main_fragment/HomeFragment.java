@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
         fragmentArrayList.add(new TrainFragment());
         fragmentManager = getChildFragmentManager();
         //初始化页卡内容
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        viewPager =  view.findViewById(R.id.viewPager);
         viewPager.setAdapter(new HomeFragmentPagerAdapter(fragmentManager, fragmentArrayList));
         viewPager.setOffscreenPageLimit(4);
         viewPager.setCurrentItem(0);

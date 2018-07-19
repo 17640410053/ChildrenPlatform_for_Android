@@ -6,10 +6,10 @@ package com.neusoft.yl.childrenplatform;
 
 public class Const {
     //API接口
-    public static String BASE_URL = "http://192.168.191.1/ChildrenPlatform/api.php/Api/"; //正式接口
+    public static String BASE_URL = "http://182.254.141.174/ChildrenPlatform/api.php/Api/"; //正式接口
     public static String T_BASE_URL = "http://127.0.0.1/ChildrenPlatform/api.php/Api/"; //测试接口
     //图片地址头
-    public static String PIC_URL = "http://192.168.191.1/ChildrenPlatform/Public/uploads/";
+    public static String PIC_URL = "http://182.254.141.174/ChildrenPlatform/Public/uploads/";
 
     public final static int USERLOGIN = 1;
     public final static int USERREGISTER = 2;

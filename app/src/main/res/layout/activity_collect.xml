@@ -10,15 +10,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:elevation="5dp"
-        android:background="@color/color_pink">
+        android:background="@color/color_pink"
+        android:elevation="5dp">
+
         <Button
             android:id="@+id/back_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/ic_back"/>
+            android:background="@drawable/ic_back" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,10 +32,25 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/collect_recycle"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.neusoft.yl.childrenplatform.Base.RecyclerViewForEmpty
+                android:id="@+id/collect_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/id_empty_view"
+                layout="@layout/layout_empty_view" />
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

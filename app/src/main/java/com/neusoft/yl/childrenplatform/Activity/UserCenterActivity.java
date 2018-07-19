@@ -57,7 +57,7 @@ public class UserCenterActivity extends BaseActivity implements RetrofitListener
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_center);
-        AppBarLayout app_bar = (AppBarLayout) findViewById(R.id.app_bar);
+        AppBarLayout app_bar = findViewById(R.id.app_bar);
         initViews();
         initData();
         app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -130,13 +130,13 @@ public class UserCenterActivity extends BaseActivity implements RetrofitListener
     void initViews() {
         text_username = findViewById(R.id.text_username);
         text_collect_num = findViewById(R.id.text_collect_num);
-        text_intro = (TextView) findViewById(R.id.text_intro);
-        user_sex = (ImageView) findViewById(R.id.user_sex);
-        user_header_img = (RoundedImageView) findViewById(R.id.user_header_img);
-        toolbar_username = (TextView) findViewById(R.id.toolbar_username);
-        back_btn = (Button) findViewById(R.id.back_btn);
-        user_data_btn = (Button) findViewById(R.id.user_data_btn);
-        radioGroup_user_center = (RadioGroup) findViewById(R.id.radioGroup_user_center);
+        text_intro = findViewById(R.id.text_intro);
+        user_sex = findViewById(R.id.user_sex);
+        user_header_img = findViewById(R.id.user_header_img);
+        toolbar_username = findViewById(R.id.toolbar_username);
+        back_btn = findViewById(R.id.back_btn);
+        user_data_btn = findViewById(R.id.user_data_btn);
+        radioGroup_user_center = findViewById(R.id.radioGroup_user_center);
         fragmentManager = getSupportFragmentManager();
     }
 
@@ -166,9 +166,9 @@ public class UserCenterActivity extends BaseActivity implements RetrofitListener
         if (requestCode == 778) {
             switch (resultCode) {
                 case RESULT_CANCELED:
-                    if (getUser_id().equals("-1")){
+                    if (getUser_id().equals("-1")) {
                         finish();
-                    }else {
+                    } else {
                         initData();
                     }
             }
@@ -188,12 +188,12 @@ public class UserCenterActivity extends BaseActivity implements RetrofitListener
         String url = Const.PIC_URL + "user_image/" + pic;
         text_username.setText(username);
         text_collect_num.setText(userCenterBean.getCollect_num());
-        if (intro != null && !intro.equals("")){
+        if (intro != null && !intro.equals("")) {
             text_intro.setText(intro);
-        }else {
+        } else {
             text_intro.setText("这个人很懒死了，什么都没有写(｡・`ω´･)");
         }
-        if (!sex.equals("3")){
+        if (!sex.equals("3")) {
             if (sex.equals("1")) {
                 user_sex.setImageResource(R.drawable.ic_sex_boy);
             }

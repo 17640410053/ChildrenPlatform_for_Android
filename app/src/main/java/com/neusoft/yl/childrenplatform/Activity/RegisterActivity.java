@@ -42,7 +42,6 @@ public class RegisterActivity extends BaseActivity implements RetrofitListener<R
         text_telephone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                showToast("111");
             }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {

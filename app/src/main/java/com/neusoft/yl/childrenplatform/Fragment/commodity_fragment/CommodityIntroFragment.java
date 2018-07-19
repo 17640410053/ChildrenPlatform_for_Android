@@ -32,165 +32,165 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  */
 public class CommodityIntroFragment extends BaseFragment implements RetrofitListener {
 
-    private TextView commodity_title, commodity_browse_num, commodity_collect_num, commodity_detail, btn_follow, company_name, company_follow_num, text_is_collect, commodity_price, btn_checkout;
-    private RoundedImageView company_image;
-    private LinearLayout liner_share, liner_collect;
-    private ImageButton collect_image;
-    private int company_id;
-    private String commodity_url;
+                private TextView commodity_title, commodity_browse_num, commodity_collect_num, commodity_detail, btn_follow, company_name, company_follow_num, text_is_collect, commodity_price, btn_checkout;
+                private RoundedImageView company_image;
+                private LinearLayout liner_share, liner_collect;
+                private ImageButton collect_image;
+                private int company_id;
+                private String commodity_url;
 
-    private void showShare() {
-        OnekeyShare oks = new OnekeyShare();
-        oks.disableSSOWhenAuthorize();
-        oks.setTitle("分享");
-        oks.setTitleUrl("http://sharesdk.cn");
-        oks.setText("我是分享文本");
-        oks.setUrl("http://sharesdk.cn");
-        oks.setComment("我是测试评论文本");
-        oks.show(getActivity());
-    }
+                private void showShare() {
+                    OnekeyShare oks = new OnekeyShare();
+                    oks.disableSSOWhenAuthorize();
+                    oks.setTitle("分享");
+                    oks.setTitleUrl("http://sharesdk.cn");
+                    oks.setText("我是分享文本");
+                    oks.setUrl("http://sharesdk.cn");
+                    oks.setComment("我是测试评论文本");
+                    oks.show(getActivity());
+                }
 
     public CommodityIntroFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        commodity_title = view.findViewById(R.id.commodity_title);
-        commodity_browse_num = view.findViewById(R.id.commodity_browse_num);
-        commodity_collect_num = view.findViewById(R.id.commodity_collect_num);
-        commodity_detail = view.findViewById(R.id.commodity_detail);
-        btn_follow = view.findViewById(R.id.btn_follow);
-        company_name = view.findViewById(R.id.company_name);
-        company_follow_num = view.findViewById(R.id.company_follow_num);
-        company_image = view.findViewById(R.id.company_image);
-        liner_share = view.findViewById(R.id.liner_share);
-        liner_collect = view.findViewById(R.id.liner_collect);
-        text_is_collect = view.findViewById(R.id.text_is_collect);
-        collect_image = view.findViewById(R.id.collect_image);
-        commodity_price = view.findViewById(R.id.commodity_price);
-        btn_checkout = view.findViewById(R.id.btn_checkout);
-
-        initData();
-
-        liner_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showShare();
-            }
-        });
-
-        liner_collect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getCollect();
-            }
-        });
-
-        btn_follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFollow(company_id);
-            }
-        });
-
-        btn_checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (getUserId() == null || getUserId().equals("-1")) {
-                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (commodity_price.getText().toString().trim().equals("￥0.00")) {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(commodity_url));
-                        startActivity(intent);
-                    } else {
-                        OrderDialogFragment orderDialogFragment = new OrderDialogFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("user_id", getUserId());
-                        bundle.putString("commodity_id", getArguments().getString("commodity_id"));
-                        orderDialogFragment.setArguments(bundle);
-                        orderDialogFragment.show(getChildFragmentManager(), "orderDialogFragment");
-                    }
+                    // Required empty public constructor
                 }
-            }
-        });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_commodity_intro, container, false);
-    }
+                @Override
+                public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+                    commodity_title = view.findViewById(R.id.commodity_title);
+                    commodity_browse_num = view.findViewById(R.id.commodity_browse_num);
+                    commodity_collect_num = view.findViewById(R.id.commodity_collect_num);
+                    commodity_detail = view.findViewById(R.id.commodity_detail);
+                    btn_follow = view.findViewById(R.id.btn_follow);
+                    company_name = view.findViewById(R.id.company_name);
+                    company_follow_num = view.findViewById(R.id.company_follow_num);
+                    company_image = view.findViewById(R.id.company_image);
+                    liner_share = view.findViewById(R.id.liner_share);
+                    liner_collect = view.findViewById(R.id.liner_collect);
+                    text_is_collect = view.findViewById(R.id.text_is_collect);
+                    collect_image = view.findViewById(R.id.collect_image);
+                    commodity_price = view.findViewById(R.id.commodity_price);
+                    btn_checkout = view.findViewById(R.id.btn_checkout);
 
-    @Override
-    public void initView() {
+                    initData();
 
-    }
+                    liner_share.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            showShare();
+                        }
+                    });
 
-    @Override
-    public void onClick(View view) {
-    }
+                    liner_collect.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            getCollect();
+                        }
+                    });
 
-    @Override
-    public void initData() {
-        getCommodityIntro();
-        getIsCollect();
-    }
+                    btn_follow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            getFollow(company_id);
+                        }
+                    });
 
-    private void getCommodityIntro() {
-        CompModel compModel = new CompModel();
-        compModel.getCommodityIntro(getArguments().getString("commodity_id"), this);
-    }
-
-    private void getIsCollect() {
-        CompModel compModel = new CompModel();
-        compModel.getIsCollect(getArguments().getString("commodity_id"), getUserId(), this);
-    }
-
-    private void getCollect() {
-        CompModel compModel = new CompModel();
-        compModel.getCollect(getArguments().getString("commodity_id"), getUserId(), this);
-    }
-
-    private void getIsFollow(int company_id) {
-        CompModel compModel = new CompModel();
-        compModel.getIsFollow(company_id, getUserId(), this);
-    }
-
-    private void getFollow(int company_id) {
-        CompModel compModel = new CompModel();
-        compModel.getFollow(company_id, getUserId(), this);
-    }
-
-    @Override
-    public void onSuccess(Object o, int flag) {
-        switch (flag) {
-            case Const.GETCOMMODITYINTRO:
-                CommodityIntroBean commodityIntroBean = (CommodityIntroBean) o;
-                commodity_title.setText(commodityIntroBean.getName());
-                commodity_browse_num.setText(commodityIntroBean.getHintnum() + "浏览");
-                commodity_collect_num.setText(commodityIntroBean.getCollectnum() + "收藏");
-                if (commodityIntroBean.getDetail().equals("")) {
-                    commodity_detail.setText("该商品尚未填写详情。");
-                } else {
-                    commodity_detail.setText(commodityIntroBean.getDetail());
+                    btn_checkout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (getUserId() == null || getUserId().equals("-1")) {
+                                Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (commodity_price.getText().toString().trim().equals("￥0.00")) {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse(commodity_url));
+                                    startActivity(intent);
+                                } else {
+                                    OrderDialogFragment orderDialogFragment = new OrderDialogFragment();
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("user_id", getUserId());
+                                    bundle.putString("commodity_id", getArguments().getString("commodity_id"));
+                                    orderDialogFragment.setArguments(bundle);
+                                    orderDialogFragment.show(getChildFragmentManager(), "orderDialogFragment");
+                                }
+                            }
+                        }
+                    });
                 }
-                company_follow_num.setText(commodityIntroBean.getFollow_num() + "粉丝");
-                company_name.setText(commodityIntroBean.getCompany_name());
-                String url = Const.PIC_URL + "company_image/" + commodityIntroBean.getCompany_image();
-                Picasso.with(getActivity()).load(url).into(company_image);
-                commodity_price.setText("￥" + commodityIntroBean.getPrice());
-                if (commodityIntroBean.getPrice().equals("0.00")){
-                    btn_checkout.setText("立即浏览");
-                }else {
-                    btn_checkout.setText("立即购买");
+
+                @Override
+                public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                        Bundle savedInstanceState) {
+                    // Inflate the layout for this fragment
+                    return inflater.inflate(R.layout.fragment_commodity_intro, container, false);
                 }
-                commodity_url = commodityIntroBean.getUrl();
-                company_id = commodityIntroBean.getCompany_id();
-                getIsFollow(commodityIntroBean.getCompany_id());
+
+                @Override
+                public void initView() {
+
+                }
+
+                @Override
+                public void onClick(View view) {
+                }
+
+                @Override
+                public void initData() {
+                    getCommodityIntro();
+                    getIsCollect();
+                }
+
+                private void getCommodityIntro() {
+                    CompModel compModel = new CompModel();
+                    compModel.getCommodityIntro(getArguments().getString("commodity_id"), this);
+                }
+
+                private void getIsCollect() {
+                    CompModel compModel = new CompModel();
+                    compModel.getIsCollect(getArguments().getString("commodity_id"), getUserId(), this);
+                }
+
+                private void getCollect() {
+                    CompModel compModel = new CompModel();
+                    compModel.getCollect(getArguments().getString("commodity_id"), getUserId(), this);
+                }
+
+                private void getIsFollow(int company_id) {
+                    CompModel compModel = new CompModel();
+                    compModel.getIsFollow(company_id, getUserId(), this);
+                }
+
+                private void getFollow(int company_id) {
+                    CompModel compModel = new CompModel();
+                    compModel.getFollow(company_id, getUserId(), this);
+                }
+
+                @Override
+                public void onSuccess(Object o, int flag) {
+                    switch (flag) {
+                        case Const.GETCOMMODITYINTRO:
+                            CommodityIntroBean commodityIntroBean = (CommodityIntroBean) o;
+                            commodity_title.setText(commodityIntroBean.getName());
+                            commodity_browse_num.setText(commodityIntroBean.getHintnum() + "浏览");
+                            commodity_collect_num.setText(commodityIntroBean.getCollectnum() + "收藏");
+                            if (commodityIntroBean.getDetail().equals("")) {
+                                commodity_detail.setText("该商品尚未填写详情。");
+                            } else {
+                                commodity_detail.setText(commodityIntroBean.getDetail());
+                            }
+                            company_follow_num.setText(commodityIntroBean.getFollow_num() + "粉丝");
+                            company_name.setText(commodityIntroBean.getCompany_name());
+                            String url = Const.PIC_URL + "company_image/" + commodityIntroBean.getCompany_image();
+                            Picasso.with(getActivity()).load(url).into(company_image);
+                            commodity_price.setText("￥" + commodityIntroBean.getPrice());
+                            if (commodityIntroBean.getPrice().equals("0.00")){
+                                btn_checkout.setText("立即浏览");
+                            }else {
+                                btn_checkout.setText("立即购买");
+                            }
+                            commodity_url = commodityIntroBean.getUrl();
+                            company_id = commodityIntroBean.getCompany_id();
+                            getIsFollow(commodityIntroBean.getCompany_id());
                 break;
             case Const.ISCOLLECT:
                 CheckBean isCollectBean = (CheckBean) o;

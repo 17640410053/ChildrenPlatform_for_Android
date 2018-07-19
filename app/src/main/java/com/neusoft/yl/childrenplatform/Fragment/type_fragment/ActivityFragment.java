@@ -41,18 +41,12 @@ public class ActivityFragment extends BaseFragment implements RetrofitListener<L
         activity_recycle = view.findViewById(R.id.activity_recycle);
         swipeRefreshLayout = view.findViewById(R.id.srl);
         swipeRefreshLayout.setColorSchemeResources(R.color.color_pink);
+        swipeRefreshLayout.setRefreshing(true);
         initData();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Random random = new Random();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        initData();
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                },1200);
+                initData();
             }
         });
     }
@@ -77,18 +71,19 @@ public class ActivityFragment extends BaseFragment implements RetrofitListener<L
     @Override
     public void initData() {
         TypeModel typeModel = new TypeModel();
-        typeModel.getTypeList(2,this);
+        typeModel.getTypeList(2, this);
     }
 
     @Override
     public void onSuccess(List<CompBean> compBeen, int flag) {
-        if (getActivity()!= null){
-            CompListAdapter adapter = new CompListAdapter(getActivity(),compBeen);
-            LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
+        if (getActivity() != null) {
+            CompListAdapter adapter = new CompListAdapter(getActivity(), compBeen);
+            LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
             layoutManager.setOrientation(GridLayoutManager.VERTICAL);
             activity_recycle.setAdapter(adapter);
             activity_recycle.setLayoutManager(layoutManager);
             activity_recycle.setItemAnimator(new DefaultItemAnimator());
+            swipeRefreshLayout.setRefreshing(false);
         }
     }
 

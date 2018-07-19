@@ -42,6 +42,7 @@ public class CompFragment extends BaseFragment implements RetrofitListener<List<
         comp_recycle = view.findViewById(R.id.comp_recycle);
         swipeRefreshLayout = view.findViewById(R.id.srl);
         swipeRefreshLayout.setColorSchemeResources(R.color.color_pink);
+        swipeRefreshLayout.setRefreshing(true);
         initData();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -90,6 +91,7 @@ public class CompFragment extends BaseFragment implements RetrofitListener<List<
             comp_recycle.setAdapter(adapter);
             comp_recycle.setLayoutManager(layoutManager);
             comp_recycle.setItemAnimator(new DefaultItemAnimator());
+            swipeRefreshLayout.setRefreshing(false);
         }
     }
 

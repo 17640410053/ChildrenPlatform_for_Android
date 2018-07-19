@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Kirito on 2017/11/25.
  */
 
-public class RetrofitBaseModel {
+public abstract class RetrofitBaseModel {
     protected Retrofit retrofit;
     public RetrofitBaseModel(){
         retrofit = new Retrofit.Builder().baseUrl(Const.BASE_URL)
